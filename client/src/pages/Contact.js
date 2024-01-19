@@ -50,10 +50,11 @@ const Contact = ({ isOpen, onClose }) => {
       message: Yup.string().required("Required"),
     }),
     onSubmit: async (values) => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
       try {
         setSubmitting(true);
-        const response = await axios.post(
-          "https://mcstm.onrender.com/api/contact",
+        const response = await axios.post(`${apiUrl}/contact`,
           values
         );
         setTimeout(() => {

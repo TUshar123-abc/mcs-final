@@ -39,10 +39,11 @@ const Membership = ({ isOpen, onClose }) => {
     
     validationSchema: validationSchema,
     onSubmit: async (values) => {
+      const apiUrl = process.env.REACT_APP_API_URL;
       try {
         setSubmitting(true);
         const response = await axios.post(
-          "https://mcstm.onrender.com/api/member/membership",
+          `${apiUrl}/membership`,
           values
         );
         console.log(response.data);
